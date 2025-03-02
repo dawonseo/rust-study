@@ -1,12 +1,22 @@
+use std::io;
+
 fn main() {
-    // 배열 요소들의 타입과 개수 정의
-    let a: [i32; 5] = [1, 2, 3, 4, 5];
-
-    // 초깃값과 세미콜론을 쓴 다음 배열의 길이를 적으면 모든 요소가 동일한 값으로 채워진 배열이 초기화됨
-    let a = [3; 5];
-
     let a = [1, 2, 3, 4, 5];
 
-    let first = a[0];
-    let second = a[1];
+    println!("Please enter an array index.");
+
+    let mut index = String::new();
+
+    io::stdin()
+        .read_line(&mut index)
+        .expect("Failed to read line");
+
+    let index: usize = index
+        .trim()
+        .parse()
+        .expect("Index entered was not a number");
+
+    let element = a[index];
+
+    println!("The value of the element at index {index} is: {element}");
 }
